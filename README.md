@@ -2,6 +2,46 @@
 
 CRPN is a Python package designed for exploring emotion perception.
 
+Data Folder Organization Guide
+--------
+**1. Labeled Dataset**
+
+allowed category list: 'anger', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise'
+
+If your dataset has labels (emotion categories), organize the images into subfolders where each subfolder represents an emotion label. The folder structure should look like this:
+
+```text
+dataset/
+├── happy/
+│   ├── img1.jpg
+│   ├── img2.jpg
+│   └── ...
+├── sad/
+│   ├── img3.jpg
+│   ├── img4.jpg
+│   └── ...
+├── anger/
+│   ├── img5.jpg
+│   ├── img6.jpg
+│   └── ...
+└── neutral/
+    ├── img7.jpg
+    ├── img8.jpg
+    └── ...
+```
+
+**2. Unlabeled Dataset**
+
+If your dataset does not have labels (i.e., images are not categorized by emotion), place all images into a single folder. The folder structure should look like this:
+
+```text
+dataset/
+├── img1.jpg
+├── img2.jpg
+├── img3.jpg
+├── img4.jpg
+├── ...
+```
 
 Requirements
 --------
@@ -51,11 +91,13 @@ from CRPN import CRPNProbing
 crpn = CRPNProbing(your_data_path)
 ```
 
-(3) Calculate Emotion Recognition Accuracy Using `crpn.test_acc()`
+(3) Calculate Emotion Recognition Accuracy Using `crpn.test_acc()` (only for labeled dataset)
 
 (4) Predict Emotion Categories Using `crpn.evaluate(output_filename)`
 
 output_filename (str): The name of the file where the predictions will be saved.
+
+Predictions: {'anger': 0, 'disgust': 1, 'fear': 2, 'happy': 3, 'neutral': 4, 'sad': 5, 'surprise': 6}
 
 (5) Extract 256-Dimensional Features with `crpn.get_features(output_filename)`
 
