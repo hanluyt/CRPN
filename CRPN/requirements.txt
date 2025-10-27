@@ -1,0 +1,5 @@
+python==3.8.18
+torch==2.3.0
+torchvision==0.18.1
+pandas==2.0.3
+opencv-python==4.8.1
